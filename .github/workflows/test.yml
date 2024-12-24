@@ -22,15 +22,25 @@ jobs:
         working-directory: ./packages/backend
         env:
           NITRO_WEBHOOK_SECRET: ${{ secrets.NITRO_WEBHOOK_SECRET }}
-          NITRO_APP_ID: ${{ secrets.NITRO_APP_ID }}
+          NITRO_APP_ID: ${{ github.secrets.NITRO_APP_ID }}
           NITRO_PRIVATE_KEY: ${{ secrets.NITRO_PRIVATE_KEY }}
           NITRO_RM_STALE_KEY: ${{ secrets.NITRO_RM_STALE_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
 
       - run: pnpm build
       - run: pnpm test
         env:
-          NITRO_WEBHOOK_SECRET: ${{ secrets.NITRO_WEBHOOK_SECRET }}
+          NITRO_WEBHOOK_SECRET:           
+          # Go to your GitHub repository settings
+          
+          # Navigate to Settings > Secrets and variables > Actions
+          
+          # Click on "New repository secret"
+          
+          # Name: NITRO_WEBHOOK_SECRET
+          
+          # Value: your-webhook-secret-value
+          
           NITRO_APP_ID: ${{ secrets.NITRO_APP_ID }}
           NITRO_PRIVATE_KEY: ${{ secrets.NITRO_PRIVATE_KEY }}
           NITRO_RM_STALE_KEY: ${{ secrets.NITRO_RM_STALE_KEY }}
